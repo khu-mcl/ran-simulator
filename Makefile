@@ -44,7 +44,7 @@ model-files: # @HELP generate various model and model-topo YAML files in sdran-h
 docker-build: # @HELP build ran-simulator Docker image
 	@go mod vendor
 	docker build . -f build/${TARGET}/Dockerfile \
-		-t onosproject/${TARGET}:${DOCKER_TAG}
+		-t ${DOCKER_REPOSITORY}/${TARGET}:${DOCKER_TAG}
 	@rm -rf vendor
 
 
@@ -57,7 +57,7 @@ docker-push:
 kind: # @HELP build Docker images and add them to the currently configured kind cluster
 kind: images
 	@if [ "`kind get clusters`" = '' ]; then echo "no kind cluster found" && exit 1; fi
-	kind load docker-image onosproject/${TARGET}:${DOCKER_TAG}
+	kind load docker-image ${DOCKER_REPOSITORY}/${TARGET}:${DOCKER_TAG}
 
 all: build images
 
