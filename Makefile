@@ -44,7 +44,7 @@ model-files: # @HELP generate various model and model-topo YAML files in sdran-h
 docker-build: # @HELP build ran-simulator Docker image
 	@go mod vendor
 	docker build . -f build/${TARGET}/Dockerfile \
-		-t ${DOCKER_REPOSITORY}/${TARGET}:${DOCKER_TAG}
+		-t ${DOCKER_REPOSITORY}${TARGET}:${DOCKER_TAG}
 	@rm -rf vendor
 
 
