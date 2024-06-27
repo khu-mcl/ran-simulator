@@ -45,9 +45,11 @@ docker-build: # @HELP build ran-simulator Docker image
 	@go mod vendor
 	docker build . -f build/${TARGET}/Dockerfile \
 		-t onosproject/${TARGET}:${DOCKER_TAG}
+	@rm -rf vendor
+
 
 images: # @HELP build all Docker images
-images: docker-build
+images: build docker-build
 
 docker-push:
 	docker push ${DOCKER_REPOSITORY}${TARGET}:${DOCKER_TAG}
