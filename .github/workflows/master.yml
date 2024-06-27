@@ -18,8 +18,6 @@ jobs:
           go-version-file: 'go.mod'
       - name: Build
         run: make build
-          #go build  -o ./build/_output/ransim ./cmd/ransim
-          #go build  -o ./build/_output/honeycomb ./cmd/honeycomb
 
   lint:
     runs-on: ubuntu-latest
@@ -52,10 +50,6 @@ jobs:
           go-version-file: 'go.mod'
       - name: Build Docker image
         run: make images
-          #git clone https://github.com/onosproject/build-tools.git build/build-tools
-          #go mod vendor
-          #docker build . -f build/ran-simulator/Dockerfile -t onosproject/ran-simulator:latest
-          #rm -rf vendor
 
   license-check:
     runs-on: ubuntu-latest
